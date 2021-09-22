@@ -16,11 +16,11 @@
         @csrf
         <p>
             <label for="title">論文タイトル</label>
-            <input type="text" name="title">
+            <input type="text" name="title" value="{{ old('title') }}">
         </p>
         <p>
             <label for="body">本文</label>
-            <textarea name="body"></textarea>
+            <textarea name="body">{{ old('title') }}</textarea>
         </p>
         <input type="submit" value="投稿">
     </form>
