@@ -12,7 +12,7 @@ class ArticleController extends Controller
         $articles = Article::all();
         return view('articles.index', compact('articles'));
     }
-    
+
     public function show($id)
     {
         $article = Article::find($id);
@@ -30,9 +30,34 @@ class ArticleController extends Controller
 
         $article->title = $request->title;
         $article->body = $request->body;
-        $article->timestamps = false;
 
         $article->save();
+
+        return redirect('/articles');
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $article = Article::find($id);
+        return view('articles.edit', compact('article'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $article = Article::find($id);
+
+        $article->title = $request->title;
+        $article->body = $request->body;
+
+        $article->save();
+
+        return redirect('/articles');
+    }
+
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+        $article->delete();
 
         return redirect('/articles');
     }
