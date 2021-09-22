@@ -8,3 +8,7 @@ a {
 label {
     display: block;
 }
+
+.error {
+    color: red;
+}

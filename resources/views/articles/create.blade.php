@@ -8,6 +8,18 @@
 </head>
 
 <body>
+    @if ($errors->any())
+        <div class="error">
+            <p>
+                <b>{{ count($errors) }}件のエラーがあります。</b>
+            </p>
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <h1>
         <b>新規論文投稿</b>
     </h1>

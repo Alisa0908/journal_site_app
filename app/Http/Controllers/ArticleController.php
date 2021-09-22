@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 
 class ArticleController extends Controller
@@ -24,7 +24,7 @@ class ArticleController extends Controller
         return view('articles.create');
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         $article = new Article;
 
@@ -36,13 +36,13 @@ class ArticleController extends Controller
         return redirect('/articles');
     }
 
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
         $article = Article::find($id);
         return view('articles.edit', compact('article'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
         $article = Article::find($id);
 
